@@ -1,0 +1,4 @@
+build/
+output/
+__pycache__/
+audio/music1_dark.wav
