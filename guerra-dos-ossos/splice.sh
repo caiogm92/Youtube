@@ -9,5 +9,5 @@ ffmpeg -y -loglevel error -i "$BOARD" -i "$INS" -filter_complex \
  "[0:v]trim=start_frame=0:end_frame=${F0},setpts=PTS-STARTPTS[a];\
   [1:v]setpts=PTS-STARTPTS,fps=30[b];\
   [0:v]trim=start_frame=${F1},setpts=PTS-STARTPTS[c];\
-  [a][b][c]concat=n=3:v=1:a=0[v]" -map "[v]" -c:v libx264 -preset medium -crf 14 -pix_fmt yuv420p "$OUT"
+  [a][b][c]concat=n=3:v=1:a=0[v]" -map "[v]" -c:v libx264 -preset medium -crf 17 -pix_fmt yuv420p "$OUT"
 echo "emenda: frames ${F0}–${F1} <- $(basename "$INS") -> $OUT"

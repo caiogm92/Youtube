@@ -327,7 +327,7 @@ def render_insert(key, a, b, still_times=None):
         return
     out = os.path.join(BUILD, f'vintage_{key}.mp4')
     p = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}',
-                          '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '14', '-pix_fmt', 'yuv420p', out],
+                          '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '17', '-pix_fmt', 'yuv420p', out],
                          stdin=subprocess.PIPE)
     for fi in range(n): p.stdin.write(make(fi).tobytes())
     p.stdin.close(); p.wait()

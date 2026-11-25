@@ -913,7 +913,7 @@ def in_insert(S, t):
 def render_range(f0, f1, out):
     R = Renderer()
     p = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}',
-                          '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '14',
+                          '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '17',
                           '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
     black = bytes(W * H * 3)
     for fi in range(f0, f1):
