@@ -12,11 +12,9 @@ python3 board_engine.py cues
 python3 sound_bed.py
 python3 - <<'PY'
 import json, math, subprocess
-m = json.load(open('build/render_meta.json')); src = 'build/board.mp4'
-for i, (k, a, b) in enumerate(m['inserts']):
-    out = f'build/spliced_{i}.mp4'
-    subprocess.run(['./splice.sh', src, f'build/vintage_{k}.mp4', str(math.ceil(a * 30)), out], check=True); src = out
-subprocess.run(['cp', src, 'build/video_full.mp4'], check=True)
+m = json.load(open('build/render_meta.json')); args = []
+for k, a, b in m['inserts']: args += [f'build/vintage_{k}.mp4', str(math.ceil(a * 30))]
+subprocess.run(['./splice.sh', 'build/board.mp4', 'build/video_full.mp4'] + args, check=True)
 PY
 mkdir -p out
 if [ "$NAR" = "none" ]; then OUTF=out/guerra_dos_ossos_PREVIA.mp4; else OUTF=out/guerra_dos_ossos_1080p.mp4; fi
